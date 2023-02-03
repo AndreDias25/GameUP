@@ -1,0 +1,93 @@
+$purple: #3D469C;
+$blue: #5B8FB9;
+$mint: #B6EADA;
+$blackPadrao: #171717;
+$blackDestaque: #242424;
+$colorP: #707075;
+$colorhr: #ccc9c9;
+
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+p{
+    color: $colorP;
+}
+
+.estruturaGeral{
+    display: grid;
+    grid-template-columns: minmax(200px, 1fr) 4fr;
+    grid-template-areas: 
+        "nav header"
+        "nav main"
+        "nav main"
+    ;
+}
+
+.nav{
+    grid-area: nav;
+    display: grid;
+    grid-template-columns:300px;
+    border-right: 1px solid black;
+}
+
+#logo{
+    color: $purple;
+    font-weight: bold;
+    padding: 40px;
+    font-size: 35px;
+}
+
+.titleFeed{
+    margin-left: 40px;
+    font-weight: bold;
+    margin-bottom: 10%;
+}
+
+.itemsNav li{
+    margin-left: 25px;
+    list-style: none;
+    display: flex;
+    flex: row wrap;
+    padding: 15px;
+    color: $colorP;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    &:hover{
+        background: $purple;
+        color: #FFFFFF;
+    }   
+}
+
+.linehr{
+    color: $colorhr;
+    border: 1px solid;
+    width: 100%;
+    margin-left: 40px;
+}
+
+#seguindo{
+    margin-top: 10%;
+}
+
+.contacts{
+    display: flex;
+    margin-bottom: 10%;
+}
+
+.contacts img{
+    border-radius: 999px;
+    margin-left: 40px;
+}
+
+.header{
+    grid-area: header;
+}
+
+.main{
+    grid-area: main;
+}
