@@ -4,7 +4,6 @@ $mint: #B6EADA;
 $blackPadrao: #171717;
 $blackDestaque: #242424;
 $colorP: #707075;
-$colorhr: #ccc9c9;
 
 *{
     padding: 0px;
@@ -20,6 +19,7 @@ p{
 .estruturaGeral{
     display: grid;
     grid-template-columns: minmax(200px, 1fr) 4fr;
+    /*grid-template-rows: 130px 400px 400px;*/
     grid-template-areas: 
         "nav header"
         "nav main"
@@ -30,8 +30,15 @@ p{
 .nav{
     grid-area: nav;
     display: grid;
-    grid-template-columns:300px;
-    border-right: 1px solid black;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "logo"
+    "feed"
+    "navegacaoLateral"
+    "seguindo"
+    "pessoas"
+    ;
+    box-shadow: 5px 0px 15px 0px rgba(44,44,44,0.15);;
 }
 
 #logo{
@@ -39,16 +46,40 @@ p{
     font-weight: bold;
     padding: 40px;
     font-size: 35px;
+    grid-area: logo;
 }
 
 .titleFeed{
     margin-left: 40px;
     font-weight: bold;
+    margin-bottom: 5%;
+    grid-area: feed;
+}
+
+#navLateral{
+    grid-area: navegacaoLateral;
+}
+
+#seguindo{
+    margin-top: 10%;
+    grid-area: seguindo;
+}
+
+.contacts{
+    display: flex;
+    grid-area: pessoas;
     margin-bottom: 10%;
 }
 
+.contacts img{
+    border-radius: 999px;
+    margin-left: 40px;
+}
+
+
 .itemsNav li{
     margin-left: 25px;
+    width: 88%;
     list-style: none;
     display: flex;
     flex: row wrap;
@@ -63,31 +94,52 @@ p{
     }   
 }
 
-.linehr{
-    color: $colorhr;
-    border: 1px solid;
-    width: 100%;
-    margin-left: 40px;
-}
 
-#seguindo{
-    margin-top: 10%;
-}
 
-.contacts{
-    display: flex;
-    margin-bottom: 10%;
-}
-
-.contacts img{
-    border-radius: 999px;
-    margin-left: 40px;
-}
-
-.header{
+.navHeader ul{
     grid-area: header;
+    display: grid;
+    border: 1px solid black;
+    grid-template-columns: 100px 200px 300px 200px 200px;
+    grid-template-areas: 
+    "navegar pesquisar chat notificacao perfil"
+    ;
+    justify-content: space-between;
 }
+
+.navHeader ul li{
+    margin-left: 20px;
+    padding: 15px;
+    list-style: none;
+}
+
+#navegar{
+    grid-area: navegar;
+    display: flex;
+}
+
+#pesquisar{
+    grid-area: pesquisar;
+    display: flex;
+}
+
+#chat{
+    grid-area: chat;
+    justify-self: end;
+}
+
+#notificacao{
+    grid-area: notificacao;
+    justify-self: end;
+}
+
+#perfil{
+    grid-area: perfil;
+    justify-self: end;
+}
+
 
 .main{
     grid-area: main;
+    border: 1px solid red;
 }
