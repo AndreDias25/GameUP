@@ -4,6 +4,7 @@ $mint: #B6EADA;
 $blackPadrao: #171717;
 $blackDestaque: #242424;
 $colorP: #707075;
+$colorBackSelect: #F6F6F6;
 
 *{
     padding: 0px;
@@ -95,28 +96,47 @@ p{
 }
 
 
+.header{
+    border: 1px solid green;
+    max-height: 140px;
+}
 
 .navHeader ul{
     grid-area: header;
     display: grid;
     border: 1px solid black;
-    grid-template-columns: 100px 200px 300px 200px 200px;
+    /*grid-template-columns: 100px 200px 300px 200px 200px;*/
+    grid-template-columns: 4fr 4fr repeat(3, 1fr);
     grid-template-areas: 
     "navegar pesquisar chat notificacao perfil"
     ;
-    justify-content: space-between;
+    /*justify-content: space-evenly;*/
 }
 
 .navHeader ul li{
     margin-left: 20px;
-    padding: 15px;
+    padding: 50px;
     list-style: none;
 }
+
+.navHeader ul li span{
+    font-size: 2em;
+    color: $colorP;
+}
+
+
+.navHeader ul li a {
+    text-decoration: none;
+    color: $colorP;
+    font-weight: bold;
+}
+
 
 #navegar{
     grid-area: navegar;
     display: flex;
 }
+
 
 #pesquisar{
     grid-area: pesquisar;
@@ -139,7 +159,38 @@ p{
 }
 
 
-.main{
+.mainContent{
     grid-area: main;
     border: 1px solid red;
+    display: grid;
+    min-height: 790px;
+    grid-template-areas: 
+    "imgMain imgMain imgMain imgMain"
+    "titleAvaliacao . . filtroAvaliacao"
+    "card card card card"
+    ;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+#imgMain{
+    grid-area: imgMain;
+}
+
+#filtroAvaliacao{
+    grid-area: filtroAvaliacao;
+    margin-right: 20%;
+    border-radius: 50px;
+    background: $colorBackSelect;
+}
+
+#titleAvaliacao{
+    grid-area: titleAvaliacao;
+    padding-left: 20%;
+    color: $colorP;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.card{
+    grid-area: card;
 }
