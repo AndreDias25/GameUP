@@ -9,6 +9,10 @@ p {
   color: #707075;
 }
 
+select {
+  border: none;
+}
+
 .estruturaGeral {
   display: grid;
   grid-template-columns: minmax(200px, 1fr) 4fr;
@@ -77,14 +81,12 @@ p {
 }
 
 .header {
-  border: 1px solid green;
   max-height: 140px;
 }
 
 .navHeader ul {
   grid-area: header;
   display: grid;
-  border: 1px solid black;
   /*grid-template-columns: 100px 200px 300px 200px 200px;*/
   grid-template-columns: 4fr 4fr repeat(3, 1fr);
   grid-template-areas: "navegar pesquisar chat notificacao perfil";
@@ -135,7 +137,6 @@ p {
 
 .mainContent {
   grid-area: main;
-  border: 1px solid red;
   display: grid;
   min-height: 790px;
   grid-template-areas: "imgMain imgMain imgMain imgMain" "titleAvaliacao . . filtroAvaliacao" "card card card card";
@@ -144,6 +145,7 @@ p {
 
 #imgMain {
   grid-area: imgMain;
+  max-width: 1500px;
 }
 
 #filtroAvaliacao {
@@ -151,12 +153,6 @@ p {
   margin-right: 20%;
   border-radius: 50px;
   background: #F6F6F6;
-  height: 50px;
-}
-
-
-#filtroAvaliacao {
-  
 }
 
 #titleAvaliacao {
@@ -169,4 +165,20 @@ p {
 
 .card {
   grid-area: card;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-content: center;
+}
+
+.cardGame {
+  border-radius: 10%;
+}
+
+.cardGame img {
+  border-radius: 10% 10% 0px 0px;
+}
+
+.cardGame p {
+  text-align: center;
 }/*# sourceMappingURL=style.css.map */
