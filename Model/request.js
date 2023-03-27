@@ -1,4 +1,4 @@
-const options = {
+/*const options = {
 	method: 'GET',
 	headers: {
 		'X-RapidAPI-Key': '958c48c0femsh6c746b17896f64ap11ed84jsn0e0a967be395',
@@ -23,4 +23,4 @@ fetch('https://opencritic-api.p.rapidapi.com/game/popular', options)
             //img.setAttribute('src', poster)
         })
     })
-	.catch(err => console.error(err))
+	.catch(err => console.error(err))*/
