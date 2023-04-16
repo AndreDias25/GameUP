@@ -1,4 +1,4 @@
 [[redirects]]
-from = "/"
-to = "view/index.html"
+from = "/*"
+to = "View/index.html"
 status = 200
