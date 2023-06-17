@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/View/styles/style.css">
+    <script src="../config.js"></script>
     <title>GameUp</title>
 </head>
 <body>
@@ -80,41 +81,8 @@
         </nav>
         <main class="main">
             <div class="mainContent">
-                <div id="slider">
-                    <div class="slides">
-                        <input type="radio" name="radio-btn" id="radio1">
-                        <input type="radio" name="radio-btn" id="radio2">
-                        <input type="radio" name="radio-btn" id="radio3">
-                        <input type="radio" name="radio-btn" id="radio4">
-
-                        <div class="slide firstImg">
-                            <img src="https://via.placeholder.com/1500x410" alt="Jogos populares">
-                        </div>
-                        <div class="slide">
-                            <img src="https://via.placeholder.com/1500x410" alt="Jogos populares">
-                        </div>
-                        <div class="slide">
-                            <img src="https://via.placeholder.com/1500x410" alt="Jogos populares">
-                        </div>
-                        <div class="slide">
-                            <img src="https://via.placeholder.com/1500x410" alt="Jogos populares">
-                        </div>
-
-                        <div class="navigation-auto">
-                            <div class="auto-btn1"></div>
-                            <div class="auto-btn2"></div>
-                            <div class="auto-btn3"></div>
-                            <div class="auto-btn4"></div>
-                        </div>
-                    </div>
-
-
-                    <div class="manual-navigation">
-                        <label for="radio1" class="manual-btn"></label>
-                        <label for="radio2" class="manual-btn"></label>
-                        <label for="radio3" class="manual-btn"></label>
-                        <label for="radio4" class="manual-btn"></label>
-                    </div>
+                <div id="slider" style="border: 1px solid red;">
+                    <img class="img_jogos" src="" alt="">
                 </div>
                 <!--<img id="imgMain" src="https://via.placeholder.com/1500x410" alt="">-->
                 
@@ -124,9 +92,9 @@
                     </select>
                 
                 <div class="card">
-                    <div class="cardGame">
-                        <img src="https://via.placeholder.com/170x170" alt="" class="imgCard">
-                        <p>Title</p>
+                    <div id="cardGame1" class="cardGame">
+                        <img id="imgCardGame1"  src="https://via.placeholder.com/170x170" alt="" class="imgCard">
+                        <p id="nameGame">Title</p>
                     </div>
                     <div class="cardGame">
                         <img src="https://via.placeholder.com/170x170" alt="" class="imgCard">
