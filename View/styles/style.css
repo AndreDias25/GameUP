@@ -209,8 +209,29 @@ select {
 }
 
 .cardGame {
+  display: grid;
+  grid-template-areas: "imgCard imgCard imgCard" "plataformas . notas" "nome . .";
   width: 300px;
 }
 .cardGame img {
   width: 100%;
+}
+
+.imgCard {
+  grid-area: imgCard;
+  height: 95%;
+}
+
+.plataformas {
+  grid-area: plataformas;
+  display: flex;
+  justify-content: space-around;
+}
+
+.notasCard {
+  grid-area: notas;
+}
+
+.nameCard {
+  grid-area: nome;
 }/*# sourceMappingURL=style.css.map */
