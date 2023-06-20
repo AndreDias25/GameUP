@@ -106,50 +106,163 @@ let bannerPrincipal = document.querySelector(".img_jogos");
 //first.src = imgJogos;
 bannerPrincipal.src = imgJogos;
 
-let cardGame1 = document.querySelector("#cardGame1");
-let imgCardGame1 = document.querySelector("#imgCardGame1");
-let nameGame = document.querySelector("#nameGame");
-let plataformas = document.querySelector(".plataformas");
+// let cardGame1 = document.querySelector("#cardGame1");
+// let imgCardGame1 = document.querySelector("#imgCardGame1");
+// let nameGame = document.querySelector("#nameGame1");
+// let plataformas = document.querySelector(".plataformas");
 
-let svgPlaystation = document.querySelector(".svgPlaystation");
-let svgXbox = document.querySelector(".svgXbox");
-let svgPC = document.querySelector(".svgPC");
-let svgNintendo = document.querySelector(".svgNintendo");
+// let svgPlaystation = document.querySelector(".svgPlaystation");
+// let svgXbox = document.querySelector(".svgXbox");
+// let svgPC = document.querySelector(".svgPC");
+// let svgNintendo = document.querySelector(".svgNintendo");
 
 
-var platforms = dadosCache.jogos[1].parent_platforms;
+// var platforms = dadosCache.jogos[1].parent_platforms;
 
-// Iterar sobre o array platforms
-for (var i = 0; i < platforms.length; i++) {
-  var platform = platforms[i];
-  var platformName = platform.platform.name;
+// // Iterar sobre o array platforms
+// for (var i = 0; i < platforms.length; i++) {
+//   var platform = platforms[i];
+//   var platformName = platform.platform.name;
   
-  // Criar um novo elemento de texto com o nome da plataforma
-  var textNode = document.createTextNode(platformName);
+//   // Criar um novo elemento de texto com o nome da plataforma
+//   var textNode = document.createTextNode(platformName);
 
-  switch (platformName) {
-    case "Xbox":
-      svgXbox.style.display = "block"
-      break;
-    case "PlayStation":
-      svgPlaystation.style.display = "block"
-      break;
-    case "Nintendo":
-      svgNintendo.style.display = "block"
-      break;
-    case "PC":
-      svgPC.style.display = "block"
+//   switch (platformName) {
+//     case "Xbox":
+//       svgXbox.style.display = "block"
+//       break;
+//     case "PlayStation":
+//       svgPlaystation.style.display = "block"
+//       break;
+//     case "Nintendo":
+//       svgNintendo.style.display = "block"
+//       break;
+//     case "PC":
+//       svgPC.style.display = "block"
       
-      break;
-    default:
-      // Bloco de código para o caso padrão
+//       break;
+//     default:
+//       // Bloco de código para o caso padrão
+//   }
+// }
+// let notas = document.querySelector(".notasCard");
+
+// //cardGame1.innerHTML = dadosCache.jogos[1].platforms[0].platform.name
+// imgCardGame1.src = dadosCache.jogos[1].background_image
+
+// nameGame.textContent = dadosCache.jogos[1].name
+
+// notas.textContent = dadosCache.jogos[1].metacritic
+
+// if(dadosCache.jogos[1].metacritic <= 25){
+//   notas.style.borderColor  = "red"
+//   notas.style.color  = "red"
+// }else if(dadosCache.jogos[1].metacritic <= 50){
+//   notas.style.borderColor  = "orange"
+//   notas.style.color  = "orange"
+// }else if(dadosCache.jogos[1].metacritic <= 75){
+//   notas.style.borderColor  = "yellow"
+//   notas.style.color  = "yellow"
+// }else{
+//   notas.style.borderColor  = "green"
+//   notas.style.color  = "green"
+// }
+
+//
+
+function cardsHome(){
+    const cards = [
+      {
+        cardId: "cardGame1",
+        imgId: "imgCardGame1",
+        nameId: "nameGame1",
+        plataformas: "plataformas1",
+        notas: "notasCard1"
+      },
+      {
+        cardId: "cardGame2",
+        imgId: "imgCardGame2",
+        nameId: "nameGame2",
+        plataformas: "plataformas2",
+        notas: "notasCard2"
+      },
+      {
+        cardId: "cardGame3",
+        imgId: "imgCardGame3",
+        nameId: "nameGame3",
+        plataformas: "plataformas3",
+        notas: "notasCard3"
+      },
+      {
+        cardId: "cardGame4",
+        imgId: "imgCardGame4",
+        nameId: "nameGame4",
+        plataformas: "plataformas4",
+        notas: "notasCard4"
+      }
+    ];
+
+    for(let i = 0; i < cards.length; i++){
+      const card = cards[i];
+      const jogo = dadosCache.jogos[i];
+
+      const imgCard = document.querySelector(`#${card.imgId}`);
+      const nameCard = document.querySelector(`#${card.nameId}`);
+      const plastaformasCard = document.querySelector(`#${card.plataformas}`);
+      const notasCard = document.querySelector(`#${card.notas}`);
+
+      imgCard.src = jogo.background_image;
+      nameCard.textContent = jogo.name;
+      notasCard.textContent = jogo.metacritic;
+
+      if (jogo.metacritic <= 25) {
+        notasCard.style.borderColor = "red";
+        notasCard.style.color = "red";
+      } else if (jogo.metacritic <= 50) {
+        notasCard.style.borderColor = "orange";
+        notasCard.style.color = "orange";
+      } else if (jogo.metacritic <= 75) {
+        notasCard.style.borderColor = "yellow";
+        notasCard.style.color = "yellow";
+      } else {
+        notasCard.style.borderColor = "green";
+        notasCard.style.color = "green";
+      }
+
+    const platforms = jogo.parent_platforms;
+    const svgPlaystation = document.querySelector(`#${card.plataformas} .svgPlaystation`);
+    const svgXbox = document.querySelector(`#${card.plataformas} .svgXbox`);
+    const svgPC = document.querySelector(`#${card.plataformas} .svgPC`);
+    const svgNintendo = document.querySelector(`#${card.plataformas} .svgNintendo`);
+
+    svgPlaystation.style.display = "none";
+    svgXbox.style.display = "none";
+    svgPC.style.display = "none";
+    svgNintendo.style.display = "none";
+
+
+    for (let j = 0; j < platforms.length; j++) {
+      const platformName = platforms[j].platform.name;
+      
+      switch (platformName) {
+        case "Xbox":
+          svgXbox.style.display = "block";
+          break;
+        case "PlayStation":
+          svgPlaystation.style.display = "block";
+          break;
+        case "Nintendo":
+          svgNintendo.style.display = "block";
+          break;
+        case "PC":
+          svgPC.style.display = "block";
+          break;
+        default:
+          // Bloco de código para o caso padrão
+          break;
+      }
+    }
   }
 }
-let notas = document.querySelector(".notasCard");
 
-//cardGame1.innerHTML = dadosCache.jogos[1].platforms[0].platform.name
-imgCardGame1.src = dadosCache.jogos[1].background_image
-
-nameGame.textContent = dadosCache.jogos[1].name
-
-notas.textContent = dadosCache.jogos[1].metacritic
+cardsHome()

@@ -245,7 +245,7 @@ select{
     display: grid;
     grid-template-areas: "imgCard imgCard imgCard" 
     "plataformas . notas" 
-    "nome . .";
+    "nome nome nome";
     width: 300px;
     img{
         width: 100%;
@@ -265,8 +265,18 @@ select{
 
 .notasCard{
     grid-area: notas;
+    border: 1px solid black;
+    border-radius:5px;
+    height: 40%;
+    width: auto;
 }
+
 
 .nameCard{
     grid-area: nome;
+}
+
+.nameGame{
+    font-weight: bold;
+    min-width: 150px;
 }
