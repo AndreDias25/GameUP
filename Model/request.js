@@ -106,69 +106,6 @@ let bannerPrincipal = document.querySelector(".img_jogos");
 //first.src = imgJogos;
 bannerPrincipal.src = imgJogos;
 
-// let cardGame1 = document.querySelector("#cardGame1");
-// let imgCardGame1 = document.querySelector("#imgCardGame1");
-// let nameGame = document.querySelector("#nameGame1");
-// let plataformas = document.querySelector(".plataformas");
-
-// let svgPlaystation = document.querySelector(".svgPlaystation");
-// let svgXbox = document.querySelector(".svgXbox");
-// let svgPC = document.querySelector(".svgPC");
-// let svgNintendo = document.querySelector(".svgNintendo");
-
-
-// var platforms = dadosCache.jogos[1].parent_platforms;
-
-// // Iterar sobre o array platforms
-// for (var i = 0; i < platforms.length; i++) {
-//   var platform = platforms[i];
-//   var platformName = platform.platform.name;
-  
-//   // Criar um novo elemento de texto com o nome da plataforma
-//   var textNode = document.createTextNode(platformName);
-
-//   switch (platformName) {
-//     case "Xbox":
-//       svgXbox.style.display = "block"
-//       break;
-//     case "PlayStation":
-//       svgPlaystation.style.display = "block"
-//       break;
-//     case "Nintendo":
-//       svgNintendo.style.display = "block"
-//       break;
-//     case "PC":
-//       svgPC.style.display = "block"
-      
-//       break;
-//     default:
-//       // Bloco de código para o caso padrão
-//   }
-// }
-// let notas = document.querySelector(".notasCard");
-
-// //cardGame1.innerHTML = dadosCache.jogos[1].platforms[0].platform.name
-// imgCardGame1.src = dadosCache.jogos[1].background_image
-
-// nameGame.textContent = dadosCache.jogos[1].name
-
-// notas.textContent = dadosCache.jogos[1].metacritic
-
-// if(dadosCache.jogos[1].metacritic <= 25){
-//   notas.style.borderColor  = "red"
-//   notas.style.color  = "red"
-// }else if(dadosCache.jogos[1].metacritic <= 50){
-//   notas.style.borderColor  = "orange"
-//   notas.style.color  = "orange"
-// }else if(dadosCache.jogos[1].metacritic <= 75){
-//   notas.style.borderColor  = "yellow"
-//   notas.style.color  = "yellow"
-// }else{
-//   notas.style.borderColor  = "green"
-//   notas.style.color  = "green"
-// }
-
-//
 
 function cardsHome(){
     const cards = [

@@ -40,8 +40,11 @@ select{
     "logo"
     "feed"
     "navegacaoLateral"
-    "seguindo"
-    "pessoas"
+    "."
+    "."
+    "."
+    "."
+    "."
     ;
     box-shadow: 5px 0px 15px 0px rgba(44,44,44,0.15);;
 }
@@ -59,6 +62,7 @@ select{
     font-weight: bold;
     margin-bottom: 5%;
     grid-area: feed;
+    font-size: 25px;
 }
 
 #navLateral{
@@ -87,16 +91,25 @@ select{
     width: 88%;
     list-style: none;
     display: flex;
-    flex: row wrap;
+    //flex: row wrap;
+    flex-wrap: wrap;
+    align-items: center;
     padding: 15px;
     color: $colorP;
     font-weight: bold;
     border-radius: 10px;
     margin-bottom: 10px;
+    cursor: pointer;
     &:hover{
         background: $purple;
-        color: #FFFFFF;
-    }   
+        p{
+            color: #F6F6F6;
+        }
+        svg{
+            fill: #F6F6F6;
+        }
+    }
+    
 }
 
 
@@ -254,7 +267,7 @@ select{
 
 .imgCard{
     grid-area: imgCard;
-    height: 95%;
+    max-height: 95%;
 }
 
 .plataformas{
@@ -268,7 +281,10 @@ select{
     border: 1px solid black;
     border-radius:5px;
     height: 40%;
-    width: auto;
+    width: 30px;
+    display: grid;
+    justify-items: center;
+    align-content: center;
 }
 
 
