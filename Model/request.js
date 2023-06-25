@@ -203,3 +203,10 @@ function cardsHome(){
 }
 
 cardsHome()
+
+//trocando cor do site
+
+var chageColorTheme = document.querySelector("#chageColorTheme");
+chageColorTheme.addEventListener("click", function(){
+    document.body.style.background = "#101012"
+})

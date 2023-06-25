@@ -5,6 +5,8 @@ $blackPadrao: #171717;
 $blackDestaque: #242424;
 $colorP: #707075;
 $colorBackSelect: #F6F6F6;
+$darkMode: #101012;
+
 
 *{
     padding: 0px;
@@ -121,16 +123,16 @@ select{
     grid-area: header;
     display: grid;
     /*grid-template-columns: 100px 200px 300px 200px 200px;*/
-    grid-template-columns: 4fr 4fr repeat(3, 1fr);
-    grid-template-areas: 
-    "navegar pesquisar chat notificacao perfil"
-    ;
+    // grid-template-columns: 4fr 4fr repeat(3, 1fr);
+    // grid-template-areas: 
+    // "navegar pesquisar chat notificacao perfil"
+    // ;
     /*justify-content: space-evenly;*/
 }
 
 .navHeader ul li{
-    margin-left: 20px;
-    padding: 50px;
+    // margin-left: 20px;
+    // padding: 50px;
     list-style: none;
 }
 
