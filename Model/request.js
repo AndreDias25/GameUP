@@ -39,7 +39,7 @@
 //     console.error(error);
 //   });
 
-const apiKey = config.apiKey;
+const apiKey = config.apiKey || process.env.API_KEY;
 const cacheKey = 'jogos';
 const tempoExpiracao = 30 * 60 * 1000; // Tempo de expiração em milissegundos (30 minutos)
 
