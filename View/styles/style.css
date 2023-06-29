@@ -5,6 +5,15 @@
   font-family: "Roboto", sans-serif;
 }
 
+.colorPDark,
+.colorSpanDark {
+  color: #F7F7F7 !important;
+}
+
+.colorSvgDark {
+  fill: #F7F7F7 !important;
+}
+
 p {
   color: #707075;
 }
@@ -216,6 +225,7 @@ select {
   display: grid;
   grid-template-areas: "imgCard imgCard imgCard" "plataformas . notas" "nome nome nome";
   width: 300px;
+  grid-template-rows: 68%;
 }
 .cardGame img {
   width: 100%;
@@ -250,4 +260,8 @@ select {
 .nameGame {
   font-weight: bold;
   min-width: 150px;
+}
+
+#chageColorTheme {
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */

@@ -39,7 +39,7 @@
 //     console.error(error);
 //   });
 
-const apiKey = config.apiKey || process.env.API_KEY;
+const apiKey = config.apiKey;
 const cacheKey = 'jogos';
 const tempoExpiracao = 30 * 60 * 1000; // Tempo de expiração em milissegundos (30 minutos)
 
@@ -205,8 +205,40 @@ function cardsHome(){
 cardsHome()
 
 //trocando cor do site
-
+var elementosP = document.querySelectorAll('p');
+var elementosSpan = document.querySelectorAll('span');
+var elementosSvg = document.querySelectorAll('svg');
 var chageColorTheme = document.querySelector("#chageColorTheme");
 chageColorTheme.addEventListener("click", function(){
-    document.body.style.background = "#101012"
+    if(chageColorTheme.textContent == "light_mode"){
+      chageColorTheme.textContent = "dark_mode";
+      document.body.style.backgroundColor = "#1F1F1F";
+
+      elementosP.forEach(function(elemento) {
+        elemento.classList.add('colorPDark');
+      });
+
+      elementosSpan.forEach(function(elemento) {
+        elemento.classList.add('colorSpanDark');
+      });
+
+      elementosSvg.forEach(function(elemento) {
+        elemento.classList.add('colorSvgDark');
+      });
+    }else if(chageColorTheme.textContent == "dark_mode"){
+      chageColorTheme.textContent = "light_mode";
+      document.body.style.backgroundColor = "#FFFFFF";
+
+      elementosP.forEach(function(elemento) {
+        elemento.classList.remove('colorPDark');
+      });
+
+      elementosSpan.forEach(function(elemento) {
+        elemento.classList.remove('colorSpanDark');
+      });
+
+      elementosSvg.forEach(function(elemento) {
+        elemento.classList.remove('colorSvgDark');
+      });
+    }
 })

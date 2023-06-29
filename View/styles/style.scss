@@ -15,6 +15,15 @@ $darkMode: #101012;
     font-family: 'Roboto', sans-serif;
 }
 
+.colorPDark, 
+.colorSpanDark{
+    color: #F7F7F7 !important;
+}
+
+.colorSvgDark{
+    fill: #F7F7F7 !important;
+}
+
 p{
     color: $colorP;
 }
@@ -262,6 +271,7 @@ select{
     "plataformas . notas" 
     "nome nome nome";
     width: 300px;
+    grid-template-rows: 68%;
     img{
         width: 100%;
     }
@@ -297,4 +307,8 @@ select{
 .nameGame{
     font-weight: bold;
     min-width: 150px;
+}
+
+#chageColorTheme{
+    cursor: pointer;
 }
