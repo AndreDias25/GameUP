@@ -20,6 +20,9 @@ p {
 
 select {
   border: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }
 
 .estruturaGeral {
@@ -98,12 +101,22 @@ select {
 }
 
 .header {
-  max-height: 140px;
+  height: 140px;
+}
+
+.navHeader {
+  height: 100%;
+  width: 100%;
+  display: flex;
 }
 
 .navHeader ul {
   grid-area: header;
-  display: grid;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 15%;
   /*grid-template-columns: 100px 200px 300px 200px 200px;*/
   /*justify-content: space-evenly;*/
 }
@@ -161,7 +174,6 @@ select {
   max-width: 1500px;
   height: 410px;
   overflow: hidden;
-  border: 1px solid orange;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -177,8 +189,11 @@ select {
 #filtroAvaliacao {
   grid-area: filtroAvaliacao;
   margin-right: 20%;
-  border-radius: 50px;
-  background: #F6F6F6;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  min-width: 250px;
+  height: 50px;
 }
 
 #titleAvaliacao {
@@ -264,4 +279,8 @@ select {
 
 #chageColorTheme {
   cursor: pointer;
+}
+
+#inputPesquisa {
+  border: none;
 }/*# sourceMappingURL=style.css.map */

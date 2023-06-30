@@ -21,7 +21,7 @@
                 <ul>
                     <li id="pesquisar"><span class="material-symbols-outlined icons">
                         search
-                        </span><input type="search" name="" id="">
+                        </span><input placeholder="Procure por algo" id="inputPesquisa" type="search" name="" id="">
                     </li>
                     <li>
                         <span id="chageColorTheme" class="material-symbols-outlined">light_mode</span>
@@ -51,16 +51,17 @@
         </nav>
         <main class="main">
             <div class="mainContent">
-                <div id="slider" style="border: 1px solid red;">
+                <div id="slider">
                     <img class="img_jogos" src="" alt="">
                 </div>
                 <!--<img id="imgMain" src="https://via.placeholder.com/1500x410" alt="">-->
                 
                     <p id="titleAvaliacao">Avaliações</p>
-                    <select name="" id="filtroAvaliacao">
-                        <option selected><p>Popular</p></option>
-                    </select>
-                
+                    <div id="filtroAvaliacao" >
+                        <select name="" id="filtroAvaliacaoSelect">
+                            <option selected>Popular</option>
+                        </select>
+                    </div>
                 <div class="card">
                     <div id="cardGame1" class="cardGame">
                         <img id="imgCardGame1"  src="https://via.placeholder.com/170x170" alt="" class="imgCard">
