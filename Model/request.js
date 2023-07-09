@@ -255,6 +255,7 @@ var cardsOthersCategories = document.querySelector(".cardsOthersCategories");
 homeContentLi.addEventListener("click", function(){
   let mainContent = document.querySelector(".main");
   mainContent.style.display = "block";
+  outrasCategorias.style.display = "none";
 })
 
 xboxContentLi.addEventListener("click", function(){
@@ -278,6 +279,26 @@ xboxContentLi.addEventListener("click", function(){
     }
     // outrasCategorias.innerHTML = abrirDivCard;
     cardsOthersCategories.innerHTML = cardsXbox;
+
+
+    fetch(`https://api.rawg.io/api/platforms?key=${apiKey}`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Erro na solicitação: ' + response.status);
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Manipular os dados da resposta (data)
+      console.log(data.results[2]);
+      console.log(data.results[4]);
+      console.log(data.results[13]);
+      console.log(data.results[14]);
+    })
+    .catch(error => {
+      // Lidar com erros
+      console.error('Erro:', error);
+    });
 })
 
 playstationContentLi.addEventListener("click", function(){
