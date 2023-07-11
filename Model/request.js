@@ -281,24 +281,50 @@ xboxContentLi.addEventListener("click", function(){
     cardsOthersCategories.innerHTML = cardsXbox;
 
 
-    fetch(`https://api.rawg.io/api/platforms?key=${apiKey}`)
-    .then(response => {
+    var promises = [];
+    var xboxJogos = [];
+    for(var w = 1; w < 50; w++){
+      var promise = fetch(`https://api.rawg.io/api/games?key=${apiKey}&page=${w}`)
+      .then(response => {
       if (!response.ok) {
         throw new Error('Erro na solicitação: ' + response.status);
       }
       return response.json();
-    })
-    .then(data => {
+      })
+      .then(data => {
       // Manipular os dados da resposta (data)
-      console.log(data.results[2]);
-      console.log(data.results[4]);
-      console.log(data.results[13]);
-      console.log(data.results[14]);
-    })
-    .catch(error => {
+      //console.log(data);
+
+      
+      xboxJogos.push(data.results);
+      //console.log(xboxJogos);
+      })
+      .catch(error => {
       // Lidar com erros
       console.error('Erro:', error);
-    });
+      });
+
+      promises.push(promise);
+    }
+
+
+    Promise.all(promises)
+      .then(() => {
+      //console.log(xboxJogos);
+      // Aqui você pode acessar e manipular os dados em xboxJogos
+      for (let i = 0; i < xboxJogos.length; i++){
+          for (let a = 0; a < xboxJogos[i].length; a++){
+            //console.log(xboxJogos[i][a])
+            if(xboxJogos[i][a].parent_platforms[0].platform.id == 3){
+              console.log(xboxJogos[i][a].name)
+            }
+          }
+      }
+      })
+      .catch(error => {
+        console.error('Erro ao obter os jogos:', error);
+      });
+    
 })
 
 playstationContentLi.addEventListener("click", function(){
