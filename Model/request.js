@@ -315,9 +315,26 @@ xboxContentLi.addEventListener("click", function(){
       for (let i = 0; i < xboxJogos.length; i++){
           for (let a = 0; a < xboxJogos[i].length; a++){
             //console.log(xboxJogos[i][a])
-            if(xboxJogos[i][a].parent_platforms[0].platform.id == 3){
-              console.log(xboxJogos[i][a].name)
+            
+
+            var PC = false;
+            var Xbox = false;
+            var outroConsole = false;
+            for(let g = 0; g < xboxJogos[i][a].parent_platforms.length; g++){
+                if(xboxJogos[i][a].parent_platforms.length == 2){
+                  if(xboxJogos[i][a].parent_platforms[g].platform.id == 1){
+                    PC = true;
+                  }else if(xboxJogos[i][a].parent_platforms[g].platform.id == 3){
+                    Xbox = true;
+                  }else{
+                    outroConsole = true;
+                  }
+                }
+                if(((PC == true && Xbox == true) || Xbox == true) && outroConsole == false){
+                  console.log(xboxJogos[i][a].name)
+                } 
             }
+            
           }
       }
       })
