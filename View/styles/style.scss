@@ -15,9 +15,12 @@ $darkMode: #101012;
     font-family: 'Roboto', sans-serif;
 }
 
-.colorPDark, 
-.colorSpanDark{
+.colorPDark{
     color: #F7F7F7 !important;
+} 
+
+.colorSpanDark{
+    color: #F7F7F7;
 }
 
 .colorSvgDark{
@@ -219,6 +222,12 @@ select{
     background-size:cover;
 }
 
+.containerSlider{
+    display: flex;
+    transition: trasnform 0.5s ease-in-out;
+    transform: translateX(0);
+}
+
 /*#slider{
     margin: 0 auto;
     width: 1500px;
@@ -251,10 +260,17 @@ select{
 
 .card{
     grid-area: card;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
-    align-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    justify-items: center;
+}
+
+#cardHome{
+    grid-area: card;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .cardGame{
@@ -279,8 +295,9 @@ select{
 }*/
 
 .img_jogos{
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .cardGame{
