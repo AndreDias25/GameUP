@@ -64,12 +64,35 @@ select{
     box-shadow: 5px 0px 15px 0px rgba(44,44,44,0.15);;
 }
 
-#logo{
-    color: $purple;
-    font-weight: bold;
-    padding: 40px;
-    font-size: 35px;
-    grid-area: logo;
+// #logo{
+
+//     p{
+//         color: $purple;
+//         font-weight: bold;
+//         padding: 40px;
+//         font-size: 35px;
+//         grid-area: logo;
+//         transition: background-image 0.3s ease-in-out;
+//     }
+    
+// }
+
+#textLogo{
+        color: $purple;
+        font-weight: bold;
+        padding: 40px;
+        font-size: 35px;
+        grid-area: logo;
+        transition: background-image 0.3s ease-in-out;
+}
+
+#logoSend:hover, 
+#textLogo:hover
+{
+    background-image: linear-gradient(135deg, #6C74BF, #2E328A); /* Gradiente para o texto */
+    background-clip: text; /* Aplica o gradiente apenas ao texto */
+    -webkit-background-clip: text; /* Suporte para navegadores WebKit */
+    color: transparent; 
 }
 
 .titleFeed{
@@ -350,4 +373,9 @@ select{
 
 #inputPesquisa{
     border: none;
+}
+
+#logoSend{
+    transform: rotate(270deg);
+    font-size: 35px;
 }
