@@ -42,11 +42,9 @@
 //const apiKey = config.apiKey;
 
 // testando api no netlify
-// Importe o pacote dotenv e configure-o
-require("dotenv").config();
+import API_KEY from '../config';
 
-// Acesse a chave da API usando process.env
-const apiKey = process.env.API_KEY || config.apiKey;
+const apiKey = API_KEY;
 
 console.log(apiKey)
 //
