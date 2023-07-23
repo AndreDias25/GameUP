@@ -42,16 +42,13 @@
 //const apiKey = config.apiKey;
 
 // testando api no netlify
-let apiKey;
+// Importe o pacote dotenv e configure-o
+require("dotenv").config();
 
-// Verifica se estamos no ambiente do Netlify
-if (window.process && window.process.env.API_KEY) {
-  apiKey = window.process.env.RAWG_API_KEY;
-} else {
-  // Chave local no arquivo config.js (funciona em desenvolvimento local)
-  apiKey = config.apiKey;
-}
+// Acesse a chave da API usando process.env
+const apiKey = process.env.API_KEY || config.apiKey;
 
+console.log(apiKey)
 //
 const cacheKey = 'jogos';
 const tempoExpiracao = 30 * 60 * 1000; // Tempo de expiração = 30 minutos
