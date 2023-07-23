@@ -39,7 +39,20 @@
 //     console.error(error);
 //   });
 
-const apiKey = config.apiKey;
+//const apiKey = config.apiKey;
+
+// testando api no netlify
+let apiKey;
+
+// Verifica se estamos no ambiente do Netlify
+if (window.process && window.process.env.API_KEY) {
+  apiKey = window.process.env.RAWG_API_KEY;
+} else {
+  // Chave local no arquivo config.js (funciona em desenvolvimento local)
+  apiKey = config.apiKey;
+}
+
+//
 const cacheKey = 'jogos';
 const tempoExpiracao = 30 * 60 * 1000; // Tempo de expiração = 30 minutos
 
