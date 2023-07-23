@@ -41,13 +41,13 @@
 
 const apiKey = config.apiKey;
 const cacheKey = 'jogos';
-const tempoExpiracao = 30 * 60 * 1000; // Tempo de expiração em milissegundos (30 minutos)
+const tempoExpiracao = 30 * 60 * 1000; // Tempo de expiração = 30 minutos
 
-// Verificar se os dados estão armazenados no localStorage e estão dentro do tempo de expiração
+// Verificando se os dados estão armazenados no localStorage e estão dentro do tempo de expiração
 const dadosCache = JSON.parse(localStorage.getItem(cacheKey));
 
 if (dadosCache && Date.now() - dadosCache.timestamp < tempoExpiracao) {
-  // Utilizar os dados do cache
+  // Utilizando os dados do cache
   console.log('Usando dados do cache');
   console.log(dadosCache.jogos);
 } else {
@@ -103,9 +103,7 @@ if (dadosCache && Date.now() - dadosCache.timestamp < tempoExpiracao) {
 const imgJogos = localStorage.getItem('imgJogos');
 console.log(dadosCache)
 let bannerPrincipal = document.querySelector(".img_jogos");
-//first.src = imgJogos;
 console.log(dadosCache.jogos[16]);
-//bannerPrincipal.src = imgJogos;
 
 let img_jogos1 = document.querySelector("#img_jogos1");
 let img_jogos2 = document.querySelector("#img_jogos2");
@@ -228,7 +226,6 @@ function cardsHome(){
           svgPC.style.display = "block";
           break;
         default:
-          // Bloco de código para o caso padrão
           break;
       }
     }
@@ -237,44 +234,106 @@ function cardsHome(){
 
 cardsHome()
 
-//trocando cor do site
-var elementosP = document.querySelectorAll('p');
-var elementosSpan = document.querySelectorAll('span');
-var elementosSvg = document.querySelectorAll('svg');
-var chageColorTheme = document.querySelector("#chageColorTheme");
+//trocando cor do site(dakmode)
+
+let isDarkMode = false;
+
 chageColorTheme.addEventListener("click", function(){
-    if(chageColorTheme.textContent == "light_mode"){
-      chageColorTheme.textContent = "dark_mode";
-      document.body.style.backgroundColor = "#1F1F1F";
-
-      elementosP.forEach(function(elemento) {
-        elemento.classList.add('colorPDark');
-      });
-
-      elementosSpan.forEach(function(elemento) {
-        elemento.classList.add('colorSpanDark');
-      });
-
-      elementosSvg.forEach(function(elemento) {
-        elemento.classList.add('colorSvgDark');
-      });
-    }else if(chageColorTheme.textContent == "dark_mode"){
-      chageColorTheme.textContent = "light_mode";
-      document.body.style.backgroundColor = "#FFFFFF";
-
-      elementosP.forEach(function(elemento) {
-        elemento.classList.remove('colorPDark');
-      });
-
-      elementosSpan.forEach(function(elemento) {
-        elemento.classList.remove('colorSpanDark');
-      });
-
-      elementosSvg.forEach(function(elemento) {
-        elemento.classList.remove('colorSvgDark');
-      });
-    }
+  toggleDarkMode();
 })
+
+
+function applyDarkMode() {
+  document.body.style.backgroundColor = "#1F1F1F";
+
+  var elementosP = document.querySelectorAll('p');
+  var elementosSpan = document.querySelectorAll('span');
+  var elementosSvg = document.querySelectorAll('svg');
+  var elementosInput = document.querySelectorAll('input');
+  var cardGame = document.querySelectorAll('.cardGame');
+  var elementosSelect = document.querySelectorAll('select');
+  var elementosOptionSelect = document.querySelectorAll('option');
+
+  elementosP.forEach(function(elemento) {
+    elemento.classList.add('colorPDark');
+  });
+
+  elementosSpan.forEach(function(elemento) {
+    elemento.classList.add('colorSpanDark');
+  });
+
+  elementosSvg.forEach(function(elemento) {
+    elemento.classList.add('colorSvgDark');
+  });
+
+  elementosInput.forEach(function(elemento) {
+    elemento.classList.add('colorInputDark');
+  });
+
+  cardGame.forEach(card => {
+    card.classList.add('colorCardDark');
+  });
+
+  elementosSelect.forEach(select => {
+    select.classList.add('colorSelectDark');
+  });
+
+  elementosOptionSelect.forEach(option => {
+    option.classList.add('colorOptionSelectDark');
+  });
+}
+
+
+function removeDarkMode() {
+  document.body.style.backgroundColor = "#FFFFFF";
+
+  var elementosP = document.querySelectorAll('p');
+  var elementosSpan = document.querySelectorAll('span');
+  var elementosSvg = document.querySelectorAll('svg');
+  var elementosInput = document.querySelectorAll('input');
+  var cardGame = document.querySelectorAll('.cardGame');
+  var elementosSelect = document.querySelectorAll('select');
+  var elementosOptionSelect = document.querySelectorAll('option');
+
+  elementosP.forEach(function(elemento) {
+    elemento.classList.remove('colorPDark');
+  });
+
+  elementosSpan.forEach(function(elemento) {
+    elemento.classList.remove('colorSpanDark');
+  });
+
+  elementosSvg.forEach(function(elemento) {
+    elemento.classList.remove('colorSvgDark');
+  });
+
+  elementosInput.forEach(function(elemento) {
+    elemento.classList.remove('colorInputDark');
+  });
+
+  cardGame.forEach(card => {
+    card.classList.remove('colorCardDark');
+  });
+
+  elementosSelect.forEach(select => {
+    select.classList.remove('colorSelectDark');
+  });
+
+  elementosOptionSelect.forEach(option => {
+    option.classList.remove('colorOptionSelectDark');
+  });
+}
+
+// Função para alternar o dark mode
+function toggleDarkMode() {
+  isDarkMode = !isDarkMode;
+
+  if (isDarkMode) {
+    applyDarkMode();
+  } else {
+    removeDarkMode();
+  }
+}
 
 //Troca de conteúdo
 var homeContentLi = document.querySelector("#homeContentLi");
@@ -311,31 +370,19 @@ xboxContentLi.addEventListener("click", function(){
       return response.json();
       })
       .then(data => {
-      // Manipular os dados da resposta (data)
-      //console.log(data);
-
-      
       xboxJogos.push(data.results);
-      //console.log(xboxJogos);
       })
       .catch(error => {
-      // Lidar com erros
       console.error('Erro:', error);
       });
-
       promises.push(promise);
     }
 
     var arrayJogosXbox = [];
     Promise.all(promises)
       .then(() => {
-      //console.log(xboxJogos);
-      // Aqui você pode acessar e manipular os dados em xboxJogos
       for (let i = 0; i < xboxJogos.length; i++){
           for (let a = 0; a < xboxJogos[i].length; a++){
-            //console.log(xboxJogos[i][a])
-            
-
             var PC = false;
             var Xbox = false;
             var outroConsole = false;
@@ -350,7 +397,6 @@ xboxContentLi.addEventListener("click", function(){
                   }
                 }
                 if(((PC == true && Xbox == true) || Xbox == true) && outroConsole == false){
-                  //console.log(xboxJogos[i][a]);
                   arrayJogosXbox.push(xboxJogos[i][a]);
                 } 
             }
@@ -373,8 +419,10 @@ xboxContentLi.addEventListener("click", function(){
 
       
     }
-    // outrasCategorias.innerHTML = abrirDivCard;
     cardsOthersCategories.innerHTML = cardsXbox;
+    if (isDarkMode) {
+      applyDarkMode();
+    }
       })
       .catch(error => {
         console.error('Erro ao obter os jogos:', error);
@@ -402,15 +450,9 @@ playstationContentLi.addEventListener("click", function(){
       return response.json();
       })
       .then(data => {
-      // Manipular os dados da resposta (data)
-      //console.log(data);
-
-      
       playJogos.push(data.results);
-      //console.log(xboxJogos);
       })
       .catch(error => {
-      // Lidar com erros
       console.error('Erro:', error);
       });
 
@@ -420,13 +462,8 @@ playstationContentLi.addEventListener("click", function(){
     var arrayPlayJogos = [];
     Promise.all(promises)
       .then(() => {
-      //console.log(xboxJogos);
-      // Aqui você pode acessar e manipular os dados em xboxJogos
       for (let i = 0; i < playJogos.length; i++){
           for (let a = 0; a < playJogos[i].length; a++){
-            //console.log(xboxJogos[i][a])
-            
-
             var PC = false;
             var Play = false;
             var outroConsole = false;
@@ -441,7 +478,6 @@ playstationContentLi.addEventListener("click", function(){
                   }
                 }
                 if(((PC == true && Play == true) || Play == true) && outroConsole == false){
-                  //console.log(xboxJogos[i][a]);
                   arrayPlayJogos.push(playJogos[i][a]);
                 } 
             }
@@ -464,8 +500,10 @@ playstationContentLi.addEventListener("click", function(){
 
       
     }
-    // outrasCategorias.innerHTML = abrirDivCard;
     cardsOthersCategories.innerHTML = cardsPlay;
+    if (isDarkMode) {
+      applyDarkMode();
+    }
       })
       .catch(error => {
         console.error('Erro ao obter os jogos:', error);
@@ -493,15 +531,9 @@ nintendoContentLi.addEventListener("click", function(){
       return response.json();
       })
       .then(data => {
-      // Manipular os dados da resposta (data)
-      //console.log(data);
-
-      
       nintendoJogos.push(data.results);
-      //console.log(xboxJogos);
       })
       .catch(error => {
-      // Lidar com erros
       console.error('Erro:', error);
       });
 
@@ -511,13 +543,8 @@ nintendoContentLi.addEventListener("click", function(){
     var arrayNintendoJogos = [];
     Promise.all(promises)
       .then(() => {
-      //console.log(xboxJogos);
-      // Aqui você pode acessar e manipular os dados em xboxJogos
       for (let i = 0; i < nintendoJogos.length; i++){
           for (let a = 0; a < nintendoJogos[i].length; a++){
-            //console.log(xboxJogos[i][a])
-            
-
             var PC = false;
             var Nintendo = false;
             var outroConsole = false;
@@ -532,7 +559,6 @@ nintendoContentLi.addEventListener("click", function(){
                   }
                 }
                 if(((PC == true && Nintendo == true) || Nintendo == true) && outroConsole == false){
-                  //console.log(xboxJogos[i][a]);
                   arrayNintendoJogos.push(nintendoJogos[i][a]);
                 } 
             }
@@ -555,8 +581,10 @@ nintendoContentLi.addEventListener("click", function(){
 
       
     }
-    // outrasCategorias.innerHTML = abrirDivCard;
     cardsOthersCategories.innerHTML = cardsNintendo;
+    if (isDarkMode) {
+      applyDarkMode();
+    }
       })
       .catch(error => {
         console.error('Erro ao obter os jogos:', error);
@@ -583,15 +611,9 @@ pcContentLi.addEventListener("click", function(){
       return response.json();
       })
       .then(data => {
-      // Manipular os dados da resposta (data)
-      //console.log(data);
-
-      
       pcJogos.push(data.results);
-      //console.log(xboxJogos);
       })
       .catch(error => {
-      // Lidar com erros
       console.error('Erro:', error);
       });
 
@@ -601,13 +623,8 @@ pcContentLi.addEventListener("click", function(){
     var arrayPCJogos = [];
     Promise.all(promises)
       .then(() => {
-      //console.log(xboxJogos);
-      // Aqui você pode acessar e manipular os dados em xboxJogos
       for (let i = 0; i < pcJogos.length; i++){
           for (let a = 0; a < pcJogos[i].length; a++){
-            //console.log(xboxJogos[i][a])
-            
-
             var PC = false;
             var outroConsole = false;
             for(let g = 0; g < pcJogos[i][a].parent_platforms.length; g++){
@@ -619,7 +636,6 @@ pcContentLi.addEventListener("click", function(){
                   }
                 }
                 if(PC == true && outroConsole == false){
-                  //console.log(xboxJogos[i][a]);
                   arrayPCJogos.push(pcJogos[i][a]);
                 } 
             }
@@ -641,8 +657,10 @@ pcContentLi.addEventListener("click", function(){
 
       
     }
-    // outrasCategorias.innerHTML = abrirDivCard;
     cardsOthersCategories.innerHTML = cardsPC;
+    if (isDarkMode) {
+      applyDarkMode();
+    }
       })
       .catch(error => {
         console.error('Erro ao obter os jogos:', error);

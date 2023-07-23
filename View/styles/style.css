@@ -17,6 +17,27 @@
   fill: #F7F7F7 !important;
 }
 
+.colorInputDark {
+  background-color: #1F1F1F !important;
+}
+
+.colorCardDark {
+  background-color: #202020 !important;
+}
+
+.colorSelectDark {
+  background-color: #1F1F1F !important;
+  color: #FFFFFF !important;
+  border: 3px solid !important;
+  -o-border-image: linear-gradient(to right, #B769C0, #E64A2A) !important;
+     border-image: linear-gradient(to right, #B769C0, #E64A2A) !important;
+  border-image-slice: 1 !important;
+}
+
+.colorOptionSelectDark {
+  color: #707067;
+}
+
 p {
   color: #707075;
 }
@@ -41,6 +62,17 @@ select {
   grid-template-columns: 1fr;
   grid-template-areas: "logo" "feed" "navegacaoLateral" "." "." "." "." ".";
   box-shadow: 5px 0px 15px 0px rgba(44, 44, 44, 0.15);
+}
+
+#logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 376px;
+  max-height: 210px;
+}
+#logo img {
+  width: 60%;
 }
 
 #textLogo {
@@ -156,6 +188,7 @@ select {
 #pesquisar {
   grid-area: pesquisar;
   display: flex;
+  gap: 2%;
 }
 
 #chat {
@@ -214,6 +247,29 @@ select {
   height: 50px;
 }
 
+#filtroAvaliacaoSelect {
+  background: #F5F5F5;
+  border-radius: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #707075;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+#filtroAvaliacaoSelect:focus {
+  outline: none;
+}
+
+#arrow-dropdown-select {
+  position: absolute;
+  margin-left: 86%;
+  margin-top: 4%;
+}
+
 #titleAvaliacao {
   grid-area: titleAvaliacao;
   padding-left: 20%;
@@ -228,6 +284,7 @@ select {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(4, 1fr);
   justify-items: center;
+  gap: 3%;
 }
 
 #cardHome {
@@ -268,6 +325,9 @@ select {
   grid-template-areas: "imgCard imgCard imgCard" "plataformas . notas" "nome nome nome";
   width: 300px;
   grid-template-rows: 68%;
+  background-color: #F5F5F5;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .cardGame img {
   width: 100%;
@@ -310,6 +370,23 @@ select {
 
 #inputPesquisa {
   border: none;
+  width: 500px;
+  color: #707075;
+  font-size: 15px;
+  font-weight: 400;
+  transition: 0.6s ease;
+  background-size: 0% 3px;
+  background-image: linear-gradient(to right, #B769C0, #E64A2A);
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+
+#inputPesquisa:focus {
+  outline: none;
+  background-image: linear-gradient(to right, #B769C0, #E64A2A); /* Gradiente da esquerda para a direita */
+  background-size: 100% 3px; /* Largura total da borda e altura da linha gradiente */
+  background-position: bottom; /* Posiciona o gradiente na parte inferior do elemento */
+  background-repeat: no-repeat; /* Evita que o gradiente se repita verticalmente */
 }
 
 #logoSend {
