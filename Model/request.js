@@ -42,10 +42,11 @@
 //const apiKey = config.apiKey;
 
 // testando api no netlify
-fetch('/api/key')
+fetch('https://gameup-ah.netlify.app/.netlify/functions/api')
   .then(response => response.json())
   .then(data => {
     const apiKey = data.apiKey;
+    console.log(apiKey);
     // Resto do seu código que faz uso da apiKey...
   })
   .catch(error => {
