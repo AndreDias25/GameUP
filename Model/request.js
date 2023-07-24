@@ -42,11 +42,15 @@
 //const apiKey = config.apiKey;
 
 // testando api no netlify
-import API_KEY from '../config';
-
-const apiKey = API_KEY;
-
-console.log(apiKey)
+fetch('/api/key')
+  .then(response => response.json())
+  .then(data => {
+    const apiKey = data.apiKey;
+    // Resto do seu código que faz uso da apiKey...
+  })
+  .catch(error => {
+    console.error('Error fetching API key:', error);
+  });
 //
 const cacheKey = 'jogos';
 const tempoExpiracao = 30 * 60 * 1000; // Tempo de expiração = 30 minutos
