@@ -16,7 +16,7 @@ app.use((req, res, next) => {
   
   // Sua rota para buscar a chave de API
   app.get('/api', (req, res) => {
-    const apiKey = process.env.RAWG_API_KEY;
+    const apiKey = process.env.API_KEY;
     if (apiKey) {
       res.json({ apiKey });
     } else {
