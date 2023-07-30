@@ -34,9 +34,9 @@ function armazenarNoCache(dados) {
 
 function distribuirJogos(dadosCache) {
   const imgJogos = localStorage.getItem('imgJogos');
-  console.log(dadosCache);
+  
   let bannerPrincipal = document.querySelector(".img_jogos");
-  console.log(dadosCache.jogos[16]);
+
 
   let img_jogos1 = document.querySelector("#img_jogos1");
   let img_jogos2 = document.querySelector("#img_jogos2");
@@ -195,7 +195,6 @@ fetchAPI()
     return armazenarNoCache(jogosArmazenados);
   })
   .then(dadosCache => {
-    console.log('Dados armazenados no cache:', dadosCache);
     distribuirJogos(dadosCache);
   })
   .catch(error => {
@@ -377,7 +376,6 @@ xboxContentLi.addEventListener("click", function(){
           }
       }
 
-      console.log(arrayJogosXbox);
       for (var i = 0; i < 12; i++) {
       cardsXbox += `
       <div id="cardGame${i}" class="cardGame">
@@ -458,7 +456,6 @@ playstationContentLi.addEventListener("click", function(){
           }
       }
 
-      console.log(arrayPlayJogos);
       for (var i = 0; i < 12; i++) {
       cardsPlay += `
       <div id="cardGame${i}" class="cardGame">
@@ -539,7 +536,6 @@ nintendoContentLi.addEventListener("click", function(){
           }
       }
 
-      console.log(arrayNintendoJogos);
       for (var i = 0; i < 12; i++) {
       cardsNintendo += `
       <div id="cardGame${i}" class="cardGame">
@@ -616,7 +612,6 @@ pcContentLi.addEventListener("click", function(){
           }
       }
 
-      console.log(arrayPCJogos);
       for (var i = 0; i < 12; i++) {
       cardsPC += `
       <div id="cardGame${i}" class="cardGame">
