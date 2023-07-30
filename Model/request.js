@@ -42,116 +42,77 @@
 //const apiKey = config.apiKey;
 
 // testando api no netlify
-fetch('https://gameup-ah.netlify.app/api')
-  .then(response => response.json())
-  .then(data => {
-    const apiKey = data.apiKey;
-    console.log(apiKey);
-    // Resto do seu código que faz uso da apiKey...
-  })
-  .catch(error => {
-    console.error('Error fetching API key:', error);
-  });
-//
-const cacheKey = 'jogos';
-const tempoExpiracao = 30 * 60 * 1000; // Tempo de expiração = 30 minutos
+// Obtendo a chave da API primeiro
 
-// Verificando se os dados estão armazenados no localStorage e estão dentro do tempo de expiração
-const dadosCache = JSON.parse(localStorage.getItem(cacheKey));
-
-if (dadosCache && Date.now() - dadosCache.timestamp < tempoExpiracao) {
-  // Utilizando os dados do cache
-  console.log('Usando dados do cache');
-  console.log(dadosCache.jogos);
-} else {
-  // Fazer uma nova requisição à API
-  console.log('Fazendo requisição à API');
-  
-  fetch(`https://api.rawg.io/api/games?key=${apiKey}`)
+function fetchAPI() {
+  return fetch('/.netlify/functions/hello')
     .then(response => {
       if (response.ok) {
         return response.json();
       } else {
         throw new Error('Erro na requisição');
       }
-    })
-    .then(data => {
-      const jogos = data.results;
-      const jogosArmazenados = [];
-
-      jogos.forEach(jogo => {
-        const nomeJogo = jogo.name;
-        const nota = jogo.metacritic;
-        const imgJogo = jogo.background_image;
-        const plataformas = jogo.platforms;
-        const plataformas_pais = jogo.parent_platforms;
-        
-        console.log(nomeJogo, nota, imgJogo, plataformas, plataformas_pais);
-        
-        const jogoArmazenado = {
-          name: nomeJogo,
-          metacritic: nota,
-          background_image: imgJogo,
-          platforms: plataformas,
-          parent_platforms: plataformas_pais
-        };
-        
-        jogosArmazenados.push(jogoArmazenado);
-      });
-
-      const dadosParaArmazenar = {
-        jogos: jogosArmazenados,
-        timestamp: Date.now()
-      };
-      
-      localStorage.setItem(cacheKey, JSON.stringify(dadosParaArmazenar));
-    })
-    .catch(error => {
-      console.error(error);
     });
 }
 
-//Distribuindo jogos para o banner e os cards
+function fetchGames(apiKey) {
+  return fetch(`https://api.rawg.io/api/games?key=${apiKey}`)
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Erro na requisição');
+      }
+    });
+}
 
-const imgJogos = localStorage.getItem('imgJogos');
-console.log(dadosCache)
-let bannerPrincipal = document.querySelector(".img_jogos");
-console.log(dadosCache.jogos[16]);
+function armazenarNoCache(dados) {
+  const cacheKey = 'jogos';
+  const dadosParaArmazenar = {
+    jogos: dados,
+    timestamp: Date.now()
+  };
+  localStorage.setItem(cacheKey, JSON.stringify(dadosParaArmazenar));
+  return dadosParaArmazenar;
+}
 
-let img_jogos1 = document.querySelector("#img_jogos1");
-let img_jogos2 = document.querySelector("#img_jogos2");
-let img_jogos3 = document.querySelector("#img_jogos3");
-let img_jogos4 = document.querySelector("#img_jogos4");
+function distribuirJogos(dadosCache) {
+  const imgJogos = localStorage.getItem('imgJogos');
+  console.log(dadosCache);
+  let bannerPrincipal = document.querySelector(".img_jogos");
+  console.log(dadosCache.jogos[16]);
 
-img_jogos1.src = dadosCache.jogos[16].background_image;
-img_jogos2.src = dadosCache.jogos[17].background_image;
-img_jogos3.src = dadosCache.jogos[18].background_image;
-img_jogos4.src = dadosCache.jogos[19].background_image;
+  let img_jogos1 = document.querySelector("#img_jogos1");
+  let img_jogos2 = document.querySelector("#img_jogos2");
+  let img_jogos3 = document.querySelector("#img_jogos3");
+  let img_jogos4 = document.querySelector("#img_jogos4");
 
+  img_jogos1.src = dadosCache.jogos[16].background_image;
+  img_jogos2.src = dadosCache.jogos[17].background_image;
+  img_jogos3.src = dadosCache.jogos[18].background_image;
+  img_jogos4.src = dadosCache.jogos[19].background_image;
 
+  //carousel
+  const imgJogosBannerHome = document.querySelector("#imgJogosBannerHome");
+  const imgJogoBanner = document.querySelectorAll("#imgJogosBannerHome img");
+  const carouselContainer = document.querySelector("#slider");
 
-//carousel
-const imgJogosBannerHome = document.querySelector("#imgJogosBannerHome");
-const imgJogoBanner = document.querySelectorAll("#imgJogosBannerHome img");
-const carouselContainer = document.querySelector("#slider");
+  let idx = 0;
 
-let idx = 0;
-
-function carrosel(){
+  function carrosel() {
     idx++;
 
-    if(idx > imgJogoBanner.length - 1){
+    if (idx > imgJogoBanner.length - 1) {
       idx = 0;
     }
 
     const carouselWidth = carouselContainer.clientWidth;
     imgJogosBannerHome.style.transform = `translateX(${-idx * carouselWidth}px)`;
-}
+  }
 
-setInterval(carrosel, 1800);
+  setInterval(carrosel, 1800);
 
-
-function cardsHome(){
+  function cardsHome() {
     const cards = [
       {
         cardId: "cardGame1",
@@ -183,7 +144,7 @@ function cardsHome(){
       }
     ];
 
-    for(let i = 0; i < cards.length; i++){
+    for (let i = 0; i < cards.length; i++) {
       const card = cards[i];
       const jogo = dadosCache.jogos[i];
 
@@ -210,42 +171,81 @@ function cardsHome(){
         notasCard.style.color = "green";
       }
 
-    const platforms = jogo.parent_platforms;
-    const svgPlaystation = document.querySelector(`#${card.plataformas} .svgPlaystation`);
-    const svgXbox = document.querySelector(`#${card.plataformas} .svgXbox`);
-    const svgPC = document.querySelector(`#${card.plataformas} .svgPC`);
-    const svgNintendo = document.querySelector(`#${card.plataformas} .svgNintendo`);
+      const platforms = jogo.parent_platforms;
+      const svgPlaystation = document.querySelector(`#${card.plataformas} .svgPlaystation`);
+      const svgXbox = document.querySelector(`#${card.plataformas} .svgXbox`);
+      const svgPC = document.querySelector(`#${card.plataformas} .svgPC`);
+      const svgNintendo = document.querySelector(`#${card.plataformas} .svgNintendo`);
 
-    svgPlaystation.style.display = "none";
-    svgXbox.style.display = "none";
-    svgPC.style.display = "none";
-    svgNintendo.style.display = "none";
+      svgPlaystation.style.display = "none";
+      svgXbox.style.display = "none";
+      svgPC.style.display = "none";
+      svgNintendo.style.display = "none";
 
+      for (let j = 0; j < platforms.length; j++) {
+        const platformName = platforms[j].platform.name;
 
-    for (let j = 0; j < platforms.length; j++) {
-      const platformName = platforms[j].platform.name;
-      
-      switch (platformName) {
-        case "Xbox":
-          svgXbox.style.display = "block";
-          break;
-        case "PlayStation":
-          svgPlaystation.style.display = "block";
-          break;
-        case "Nintendo":
-          svgNintendo.style.display = "block";
-          break;
-        case "PC":
-          svgPC.style.display = "block";
-          break;
-        default:
-          break;
+        switch (platformName) {
+          case "Xbox":
+            svgXbox.style.display = "block";
+            break;
+          case "PlayStation":
+            svgPlaystation.style.display = "block";
+            break;
+          case "Nintendo":
+            svgNintendo.style.display = "block";
+            break;
+          case "PC":
+            svgPC.style.display = "block";
+            break;
+          default:
+            break;
+        }
       }
     }
   }
+
+  cardsHome();
 }
 
-cardsHome()
+// Execução sequencial das operações
+fetchAPI()
+  .then(data => {
+    const apiKey = data.apiKey;
+    return fetchGames(apiKey);
+  })
+  .then(data => {
+    const jogos = data.results;
+    const jogosArmazenados = [];
+
+    jogos.forEach(jogo => {
+      const nomeJogo = jogo.name;
+      const nota = jogo.metacritic;
+      const imgJogo = jogo.background_image;
+      const plataformas = jogo.platforms;
+      const plataformas_pais = jogo.parent_platforms;
+
+      const jogoArmazenado = {
+        name: nomeJogo,
+        metacritic: nota,
+        background_image: imgJogo,
+        platforms: plataformas,
+        parent_platforms: plataformas_pais
+      };
+
+      jogosArmazenados.push(jogoArmazenado);
+    });
+
+    return armazenarNoCache(jogosArmazenados);
+  })
+  .then(dadosCache => {
+    console.log('Dados armazenados no cache:', dadosCache);
+    distribuirJogos(dadosCache);
+  })
+  .catch(error => {
+    console.error('Ocorreu um erro:', error);
+  });
+
 
 //trocando cor do site(dakmode)
 
