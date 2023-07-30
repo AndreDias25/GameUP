@@ -1,48 +1,4 @@
-// fetch(`https://api.rawg.io/api/games?key=${config.apiKey}`)
-//   .then(response => {
-//     if (response.ok) {
-//       return response.json();
-//     } else {
-//       throw new Error('Erro na requisição');
-//     }
-//   })
-//   .then(data => {
-//     // Armazenar os dados dos jogos, incluindo as URLs das imagens
-//     console.log(data)
-//     const jogos = data.results;
-//     const jogosArmazenados = [];
-//     // const imgJogos = data.results[0].background_image;
-//     // console.log(imgJogos)
-
-//     jogos.forEach(jogo => {
-//         const nomeJogo = jogo.name;
-//         const nota = jogo.metacritic;
-//         const imgJogo = jogo.background_image;
-//         const plataformas = jogo.platforms;
-//         // Faça algo com a imagem do jogo, por exemplo:
-//         console.log(nomeJogo, nota, imgJogo, plataformas);
-
-//         const jogoArmazenado = {
-//             name: imgJogo,
-//             metacritic: nota, 
-//             background_image: imgJogo,
-//             platforms: plataformas
-//         }
-
-//          // Armazene o jogo no array temporário
-//         jogosArmazenados.push(jogoArmazenado);
-//       });
-//     localStorage.setItem('jogos', JSON.stringify(jogosArmazenados));
-//     // localStorage.setItem('imgJogos', imgJogos);
-//   })
-//   .catch(error => {
-//     console.error(error);
-//   });
-
-//const apiKey = config.apiKey;
-
-// testando api no netlify
-// Obtendo a chave da API primeiro
+let apiKey;
 
 function fetchAPI() {
   return fetch('/.netlify/functions/hello')
@@ -211,7 +167,7 @@ function distribuirJogos(dadosCache) {
 // Execução sequencial das operações
 fetchAPI()
   .then(data => {
-    const apiKey = data.apiKey;
+    apiKey = data.apiKey;
     return fetchGames(apiKey);
   })
   .then(data => {
@@ -249,7 +205,11 @@ fetchAPI()
 
 //trocando cor do site(dakmode)
 
-let isDarkMode = false;
+document.addEventListener("DOMContentLoaded", function() {
+  let chageColorTheme = document.querySelector("#chageColorTheme");
+  // Restante do código que adiciona o evento ao botão
+
+  let isDarkMode = false;
 
 chageColorTheme.addEventListener("click", function(){
   toggleDarkMode();
@@ -679,3 +639,5 @@ pcContentLi.addEventListener("click", function(){
         console.error('Erro ao obter os jogos:', error);
       });
 })
+});
+
